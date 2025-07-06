@@ -39,7 +39,9 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv("${SONARQUBE}") {
-          sh 'mvn sonar:sonar -f backend/pom.xml'
+          withMaven(maven: 'Maven') {
+            sh 'mvn sonar:sonar -f backend/pom.xml'
+          }
         }
       }
     }
