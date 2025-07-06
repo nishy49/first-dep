@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  tools {
+    nodejs 'NodeJS'
+  }
+
   environment {
     SONARQUBE = 'SonarQubeServer'
   }
@@ -26,10 +30,8 @@ pipeline {
     stage('Build Frontend') {
       steps {
         dir('frontend') {
-          withNodejs('NodeJS') {
-            sh 'npm install'
-            sh 'npm run build'
-          }
+          sh 'npm install'
+          sh 'npm run build'
         }
       }
     }
