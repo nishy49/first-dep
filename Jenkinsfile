@@ -3,6 +3,7 @@ pipeline {
 
   tools {
     nodejs 'NodeJS'
+    maven 'Maven'
   }
 
   environment {
@@ -39,8 +40,10 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv("${SONARQUBE}") {
-          withMaven(maven: 'Maven') {
-            sh 'mvn sonar:sonar -f backend/pom.xml'
+          dir('backend') {
+            withMaven(maven: 'Maven') {
+              sh 'mvn sonar:sonar'
+            }
           }
         }
       }
