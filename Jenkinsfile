@@ -2,14 +2,14 @@ pipeline {
   agent any
 
   environment {
-    SONARQUBE = 'SonarQubeServer' // Name of your SonarQube server in Jenkins config
+    SONARQUBE = 'SonarQubeServer'
   }
 
   stages {
 
     stage('Checkout') {
       steps {
-        git url: 'https://github.com/nishy49/first-dep.git', branch: 'main'
+        echo "Code already checked out by Jenkins SCM"
       }
     }
 
