@@ -26,7 +26,7 @@ pipeline {
     stage('Build Frontend') {
       steps {
         dir('frontend') {
-          withNodeJS('NodeJS') {
+          withNodejs('NodeJS') {
             sh 'npm install'
             sh 'npm run build'
           }
